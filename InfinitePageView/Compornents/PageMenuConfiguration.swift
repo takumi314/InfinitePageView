@@ -6,4 +6,8 @@
 //  Copyright © 2018年 Takumi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct PageMenuConfiguration {
+    
+}
