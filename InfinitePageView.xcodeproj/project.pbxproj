@@ -74,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E115DE41209CB60300FBA5B5 /* Compornents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Compornents;
+			sourceTree = "<group>";
+		};
 		E1E5DAB0209CA25400B59F73 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +104,7 @@
 		E1E5DABB209CA25400B59F73 /* InfinitePageView */ = {
 			isa = PBXGroup;
 			children = (
+				E115DE41209CB60300FBA5B5 /* Compornents */,
 				E1E5DABC209CA25400B59F73 /* AppDelegate.swift */,
 				E1E5DABE209CA25400B59F73 /* ViewController.swift */,
 				E1E5DAC0209CA25400B59F73 /* Main.storyboard */,
