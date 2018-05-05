@@ -18,7 +18,6 @@
 		E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4B209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift */; };
 		E115DE50209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
 		E115DE51209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
-		E115DE52209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
 		E115DE69209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
 		E115DE6A209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
 		E115DE6B209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
@@ -98,14 +97,22 @@
 		E115DE41209CB60300FBA5B5 /* Compornents */ = {
 			isa = PBXGroup;
 			children = (
-				E115DE42209CB64C00FBA5B5 /* PageItemView.swift */,
+				E115DE6D209D4FDA00FBA5B5 /* UI Parts */,
 				E115DE45209CB8CA00FBA5B5 /* PageMenuConfiguration.swift */,
 				E115DE48209CBB4000FBA5B5 /* InfinitePageView.swift */,
 				E115DE4B209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift */,
-				E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */,
 				E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */,
 			);
 			path = Compornents;
+			sourceTree = "<group>";
+		};
+		E115DE6D209D4FDA00FBA5B5 /* UI Parts */ = {
+			isa = PBXGroup;
+			children = (
+				E115DE42209CB64C00FBA5B5 /* PageItemView.swift */,
+				E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */,
+			);
+			path = "UI Parts";
 			sourceTree = "<group>";
 		};
 		E1E5DAB0209CA25400B59F73 = {
@@ -324,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
-				E115DE52209CCEE900FBA5B5 /* PageContentView.swift in Sources */,
 				E1E5DADD209CA25500B59F73 /* InfinitePageViewUITests.swift in Sources */,
 				E115DE6B209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */,
 			);

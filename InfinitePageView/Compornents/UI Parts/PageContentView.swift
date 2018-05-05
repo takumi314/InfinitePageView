@@ -1,5 +1,5 @@
 //
-//  PageItemView.swift
+//  PageContentView.swift
 //  InfinitePageView
 //
 //  Created by NishiokaKohei on 2018/05/05.
@@ -8,8 +8,12 @@
 
 import UIKit
 
-class PageItemView: UIView {
+protocol PagePresenting {
 
+}
 
-    
+public class PageContentView: UIView {
+
+    public var imageView: UIImageView?
+
 }
