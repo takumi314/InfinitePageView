@@ -97,6 +97,7 @@
 		E115DE41209CB60300FBA5B5 /* Compornents */ = {
 			isa = PBXGroup;
 			children = (
+				E115DE6E209D508E00FBA5B5 /* ValueObjects */,
 				E115DE6D209D4FDA00FBA5B5 /* UI Parts */,
 				E115DE45209CB8CA00FBA5B5 /* PageMenuConfiguration.swift */,
 				E115DE48209CBB4000FBA5B5 /* InfinitePageView.swift */,
@@ -113,6 +114,13 @@
 				E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */,
 			);
 			path = "UI Parts";
+			sourceTree = "<group>";
+		};
+		E115DE6E209D508E00FBA5B5 /* ValueObjects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ValueObjects;
 			sourceTree = "<group>";
 		};
 		E1E5DAB0209CA25400B59F73 = {
