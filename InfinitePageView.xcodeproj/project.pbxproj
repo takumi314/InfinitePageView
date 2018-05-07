@@ -20,10 +20,11 @@
 		E115DE51209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
 		E115DE69209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
 		E115DE6A209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
-		E115DE6B209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
 		E115DE70209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePageObject.swift */; };
 		E115DE71209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePageObject.swift */; };
 		E115DE72209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePageObject.swift */; };
+		E115DE74209F63D400FBA5B5 /* CGManipulatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */; };
+		E115DE75209F6B8900FBA5B5 /* CGManipulatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */; };
 		E1E5DABD209CA25400B59F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5DABC209CA25400B59F73 /* AppDelegate.swift */; };
 		E1E5DABF209CA25400B59F73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5DABE209CA25400B59F73 /* ViewController.swift */; };
 		E1E5DAC2209CA25400B59F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E5DAC0209CA25400B59F73 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
 		E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfinitePageView+UIScrollView.swift"; sourceTree = "<group>"; };
 		E115DE6F209D50D900FBA5B5 /* InfinitePageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePageObject.swift; sourceTree = "<group>"; };
+		E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGManipulatable.swift; sourceTree = "<group>"; };
 		E1E5DAB9209CA25400B59F73 /* InfinitePageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E5DABC209CA25400B59F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E5DABE209CA25400B59F73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				E115DE42209CB64C00FBA5B5 /* PageItemView.swift */,
 				E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */,
+				E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */,
 			);
 			path = "UI Parts";
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				E115DE50209CCEE900FBA5B5 /* PageContentView.swift in Sources */,
 				E115DE43209CB64C00FBA5B5 /* PageItemView.swift in Sources */,
 				E115DE49209CBB4000FBA5B5 /* InfinitePageView.swift in Sources */,
+				E115DE74209F63D400FBA5B5 /* CGManipulatable.swift in Sources */,
 				E1E5DABD209CA25400B59F73 /* AppDelegate.swift in Sources */,
 				E115DE70209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */,
 				E115DE69209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */,
@@ -338,6 +342,7 @@
 				E115DE71209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */,
 				E115DE4D209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
 				E115DE4A209CBB4000FBA5B5 /* InfinitePageView.swift in Sources */,
+				E115DE75209F6B8900FBA5B5 /* CGManipulatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +353,6 @@
 				E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
 				E115DE72209D50D900FBA5B5 /* InfinitePageObject.swift in Sources */,
 				E1E5DADD209CA25500B59F73 /* InfinitePageViewUITests.swift in Sources */,
-				E115DE6B209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
