@@ -1,5 +1,5 @@
 //
-//  InfinitePageObject.swift
+//  InfinitePage.swift
 //  InfinitePageView
 //
 //  Created by NishiokaKohei on 2018/05/05.
@@ -10,8 +10,8 @@ import UIKit
 
 public struct InfinitePage {
     public let index: Int
-    public let item: PageContentView
-    public let content: PageItemView
+    public let item: PageItemView
+    public let content: PageContentView
     public let offset: CGFloat
     public let size: CGSize
 }
