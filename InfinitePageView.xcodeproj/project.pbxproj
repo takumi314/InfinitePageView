@@ -15,7 +15,6 @@
 		E115DE4A209CBB4000FBA5B5 /* InfinitePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE48209CBB4000FBA5B5 /* InfinitePageView.swift */; };
 		E115DE4C209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4B209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift */; };
 		E115DE4D209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4B209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift */; };
-		E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4B209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift */; };
 		E115DE50209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
 		E115DE51209CCEE900FBA5B5 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE4F209CCEE900FBA5B5 /* PageContentView.swift */; };
 		E115DE69209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
@@ -355,7 +354,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
 				E1E5DADD209CA25500B59F73 /* InfinitePageViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
