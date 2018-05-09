@@ -15,3 +15,13 @@ public struct InfinitePage {
     public let offset: CGFloat
     public let size: CGSize
 }
+
+extension InfinitePage: Equatable {
+    public static func ==(lhs: InfinitePage, rhs: InfinitePage) -> Bool {
+        return lhs.index == rhs.index &&
+            lhs.item.isEqual(rhs.item) &&
+            lhs.content.isEqual(rhs.content) &&
+            lhs.offset == rhs.offset &&
+            lhs.size == rhs.size
+    }
+}

@@ -10,10 +10,13 @@ import XCTest
 @testable import InfinitePageView
 
 class InfinitePageViewTests: XCTestCase {
+
+    var pageView: InfinitePageView?
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // Initialize
+        pageView = InfinitePageView()
     }
     
     override func tearDown() {
@@ -24,6 +27,20 @@ class InfinitePageViewTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testAddPage() {
+        // given
+        let pageItem = PageItemView(frame: CGRect.zero, title: "")
+        let pageContent = PageContentView(frame: CGRect.zero)
+        let page = InfinitePage(index: 0, item: pageItem, content: pageContent, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
+
+        // when
+        pageView?.addPage(page)
+
+        // then
+        let first = pageView!.dataSource.first!
+        XCTAssertTrue(first == page)
     }
     
     func testPerformanceExample() {
