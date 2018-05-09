@@ -8,48 +8,76 @@
 
 import UIKit
 
-class PageItemView: UIView {
+public class PageItemView: UIView {
 
     // MARK: - Properties
 
-    var titleLabel : UILabel?
-    var menuItemSeparator : UIView?
+    var titleLabel = UILabel()
+    var menuItemSeparator = UIView()
+    var width: CGFloat = 0.0
 
     // MARK: - Methods
 
-    func setUpMenuItemView(_ menuItemWidth: CGFloat,
-                           menuScrollViewHeight: CGFloat,
-                           indicatorHeight: CGFloat,
-                           separatorPercentageHeight: CGFloat,
-                           separatorWidth: CGFloat,
-                           separatorRoundEdges: Bool,
-                           menuItemSeparatorColor: UIColor) {
+    init(frame: CGRect, title: String) {
+        super.init(frame: frame)
+        commonInit()
+        setTitleText(title)
+    }
 
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
 
-        titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: menuItemWidth, height: menuScrollViewHeight - indicatorHeight))
+    func commonInit() {
+        backgroundColor = .blue
 
-        menuItemSeparator = UIView(frame: CGRect(x: menuItemWidth - (separatorWidth / 2),
-                                                 y: floor(menuScrollViewHeight * ((1.0 - separatorPercentageHeight) / 2.0)),
-                                                 width: separatorWidth,
-                                                 height: floor(menuScrollViewHeight * separatorPercentageHeight)))
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleLabel)
 
-        menuItemSeparator!.backgroundColor = menuItemSeparatorColor
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0.0),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0.0),
+            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0.0)
+        ])
+    }
 
-        if separatorRoundEdges {
-            menuItemSeparator!.layer.cornerRadius = menuItemSeparator!.frame.width / 2
+    func setUpMenuItemView(_ config: MenuItemConfiguration) {
+        let labelHeight = config.menuScrollViewHeight - config.indicatorHeight
+        titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: config.menuItemWidth, height: labelHeight))
+
+        let xValue = config.menuItemWidth - (config.separatorWidth / 2.0)
+        let yValue = config.menuScrollViewHeight * ((1.0 - config.separatorPercentageHeight) / 2.0)
+        let separatorHeight = config.menuScrollViewHeight * config.separatorPercentageHeight
+        menuItemSeparator = UIView(frame: CGRect(x: xValue, y: yValue, width: config.separatorWidth, height: separatorHeight))
+
+        menuItemSeparator.backgroundColor = config.menuItemSeparatorColor
+
+        if config.separatorRoundEdges {
+            menuItemSeparator.layer.cornerRadius = menuItemSeparator.frame.width / 2
         }
 
-        menuItemSeparator!.isHidden = true
-        self.addSubview(menuItemSeparator!)
-        self.addSubview(titleLabel!)
+        menuItemSeparator.isHidden = true
+        self.addSubview(menuItemSeparator)
+        self.addSubview(titleLabel)
     }
 
     func setTitleText(_ text: String) {
-        guard let titleLabel = self.titleLabel
-            else { return }
         titleLabel.text = text
         titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
         titleLabel.sizeToFit()
+    }
+
+    func highlightMenuItem(_ didHighlightView: Bool) {
+        if didHighlightView {
+            backgroundColor = .white
+        } else {
+            backgroundColor = .blue
+        }
     }
 
     func configure(for pageView: InfinitePageView, view: UIView, index: CGFloat) {
@@ -57,3 +85,5 @@ class PageItemView: UIView {
     }
 
 }
+
+extension PageItemView: CGManipulatable { }

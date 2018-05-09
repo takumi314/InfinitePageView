@@ -22,7 +22,6 @@
 		E115DE6A209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE68209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift */; };
 		E115DE70209D50D900FBA5B5 /* InfinitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePage.swift */; };
 		E115DE71209D50D900FBA5B5 /* InfinitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePage.swift */; };
-		E115DE72209D50D900FBA5B5 /* InfinitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE6F209D50D900FBA5B5 /* InfinitePage.swift */; };
 		E115DE74209F63D400FBA5B5 /* CGManipulatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */; };
 		E115DE75209F6B8900FBA5B5 /* CGManipulatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */; };
 		E11A7F0620A33A5100E4C1E6 /* MenuItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11A7F0520A33A5100E4C1E6 /* MenuItemConfiguration.swift */; };
@@ -357,7 +356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E115DE4E209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
-				E115DE72209D50D900FBA5B5 /* InfinitePage.swift in Sources */,
 				E1E5DADD209CA25500B59F73 /* InfinitePageViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
