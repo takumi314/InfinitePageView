@@ -15,5 +15,8 @@ protocol PagePresenting {
 public class PageContentView: UIView {
 
     public var imageView: UIImageView?
+    public var title: String?
 
 }
+
+extension PageContentView: CGManipulatable { }
