@@ -31,10 +31,24 @@ public protocol InfinitePageViewDelegate {
     func infinitePageView(_ pageView: InfinitePageView, didEndDecelerating scrollView: UIScrollView, atPage index: Int)
 }
 
-private enum MenuControllers {
-    static let Padding: CGFloat = 3
-    static let Dimensions: CGFloat = 150
-    static let Offset: CGFloat = 100
+public enum Menu {
+    static let Offset: CGFloat = 0.0
+    static let height: CGFloat = 35.0
+    static let fontSize: CGFloat = 16.0
+
+    enum Padding {
+        static let top: CGFloat = 0.0
+        static let leading: CGFloat = 25.0
+        static let trailing: CGFloat = 25.0
+        static let bottom: CGFloat = 0.0
+    }
+
+    enum Margin {
+        static let top: CGFloat = 4.0
+        static let leading: CGFloat = 2.0
+        static let trailing: CGFloat = 2.0
+        static let bottom: CGFloat = 0.0
+    }
 }
 
 
@@ -62,10 +76,7 @@ public class InfinitePageView: UIView {
     var lastMenuScrollOffset: CGPoint = CGPoint.zero
 
     // ページ管理
-    var initialIndex: Int = 0
     var currentPage: Page = 1   // { Page| 1, 2, 3, ... }
-
-    //
     var currentIndex: Int = 0
 
     var delegate: PageMenuDelegate?
@@ -75,17 +86,19 @@ public class InfinitePageView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initializeMenuScrollView()
+        initializeContentScrollView()
     }
 
     public convenience init(_ views: [PageContentView], initialIndex: Int = 0) {
         self.init(frame: CGRect.zero)
         self.viewContents = views
-        self.initialIndex = initialIndex
+        self.currentIndex = initialIndex
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeMenuScrollView()
+        initializeContentScrollView()
     }
 
 }
@@ -106,17 +119,32 @@ extension InfinitePageView {
 
         // Apply constraints to the scrollview. You want the scroll view
         // to completely fill the HorizontalScrollerView
-        let height: CGFloat = 50.0
         NSLayoutConstraint.activate([
             menuScrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0),
             menuScrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0.0),
             menuScrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0.0),
-            menuScrollView.heightAnchor.constraint(equalToConstant: height)
+            menuScrollView.heightAnchor.constraint(equalToConstant: Menu.height)
         ])
 
         // Adds the Tap Action
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuScrollTapped(_:)))
         menuScrollView.addGestureRecognizer(tap)
+    }
+
+    func initializeContentScrollView() {
+        contentScrollView.backgroundColor = .gray
+
+        addSubview(contentScrollView)
+
+        contentScrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentScrollView.isPagingEnabled = true
+
+        NSLayoutConstraint.activate([
+            contentScrollView.topAnchor.constraint(equalTo: self.menuScrollView.bottomAnchor, constant: 0.0),
+            contentScrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0.0),
+            contentScrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0.0),
+            contentScrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0.0)
+        ])
     }
 
     @objc func menuScrollTapped(_ gesture: UITapGestureRecognizer) {
@@ -161,22 +189,16 @@ extension InfinitePageView {
 
 extension InfinitePageView {
 
-    // MARK: - Private methods
+    // MARK: - Public methods
 
-    func commonInit() {
+    public func commit() {
         reload()
         scrollToView(at: currentIndex)
+        menuScrollView.showsHorizontalScrollIndicator = false
     }
 
-    func addPage(_ page: InfinitePage) {
+    public func addPage(_ page: InfinitePage) {
         dataSource.append(page)
-    }
-
-    func sort(ascending: Bool = true) {
-        dataSource = dataSource.lazy
-            .sorted { (first, second) -> Bool in
-                return ascending ? first.index < second.index : first.index > second.index
-            }
     }
 
     func reload() {
@@ -188,42 +210,65 @@ extension InfinitePageView {
         menuItems.forEach({ $0.removeFromSuperview() })
         viewContents.forEach({ $0.removeFromSuperview() })
 
-        // setup scroll view
+        // setup scroll view paging
         contentScrollView.isPagingEnabled = true
 
-
         // Configure scroll view content size
-        let contentWidth = contentScrollView.bounds.width
-        let contentHeight = CGFloat(0.0)
-        contentScrollView.contentSize = CGSize(width: contentWidth * CGFloat(viewContents.count),
-                                               height: contentHeight)
+//        let contentWidth = contentScrollView.bounds.width
+//        let contentHeight = CGFloat(0.0)
+//        contentScrollView.contentSize = CGSize(width: contentWidth * CGFloat(viewContents.count),
+//                                               height: contentHeight)
 
-        self.viewContents = initialInfinitePage.map({ $0.content })
-        self.menuItems = initialInfinitePage.map({ $0.item })
+        // order by index
+//        viewContents = dataSource.sorted(by: { $0.index < $1.index }).map({ $0.content })
+
+        var xValue = Menu.Offset
+        var xIndex: CGFloat = 0.0
+        let contentSize = contentScrollView.bounds.size
+
+        dataSource
+            .sorted { $0.index < $1.index }
+            .map { ($0.item, $0.content) }
+            .map { [unowned self](menu: PageItemView, content: PageContentView) -> (PageItemView, PageContentView) in
+
+                // For menu
+                xValue += Menu.Margin.leading
+
+                let drawingTextSize = (menu.titleLabel.text ?? "").drawingRect(UIFont.systemFont(ofSize: Menu.fontSize))
+                let menuItemWidth = drawingTextSize.width + Menu.Padding.leading + Menu.Padding.trailing
+                menu.frame = CGRect(x: xValue, y: Menu.Margin.top, width: menuItemWidth, height: Menu.height)
+
+                self.menuScrollView.addSubview(menu)
+
+                xValue += menuItemWidth + Menu.Margin.trailing
 
 
-        menuItems = dataSource.sorted(by: { $0.index < $1.index }).map({ $0.item })
-        viewContents = dataSource.sorted(by: { $0.index < $1.index }).map({ $0.content })
+                // For content
+                print(xIndex)
+                content.frame = CGRect(x: xIndex * contentSize.width, y: Menu.height, width: contentSize.width, height: contentSize.height)
 
-        var xValue = MenuControllers.Offset
+                self.contentScrollView.addSubview(content)
+                self.contentScrollView.backgroundColor = .yellow
 
-        menuItems = (0..<dataSource.count).map {
-            [unowned self](index: Int) -> PageItemView in
+                xIndex += 1.0
 
-            xValue += MenuControllers.Padding
+                return (menu, content)
+            }.forEach {
+                self.menuItems.append($0.0)
+                self.viewContents.append($0.1)
+            }
 
-            let menuItemView = self.menuItems[index]
-            let menuItemHeight: CGFloat = 50.0
-            menuItemView.frame = CGRect(x: xValue, y: MenuControllers.Padding, width: MenuControllers.Dimensions, height: menuItemHeight)
+        menuScrollView.contentSize = CGSize(width: xValue + menuItems.last!.size.width , height: Menu.height)
+        contentScrollView.contentSize = CGSize(width: xIndex * contentSize.width, height: contentSize.height)
+    }
 
-            self.menuScrollView.addSubview(menuItemView)
+    // MARK: - Private methods
 
-            xValue += MenuControllers.Dimensions + MenuControllers.Padding
-
-            return menuItemView
+    private func sort(ascending: Bool = true) {
+        dataSource = dataSource.lazy
+            .sorted { (first, second) -> Bool in
+                return ascending ? first.index < second.index : first.index > second.index
         }
-
-        menuScrollView.contentSize = CGSize(width: xValue + MenuControllers.Dimensions, height: 30.0)
     }
 
     func contentSizeOfMenuItem() -> CGFloat {

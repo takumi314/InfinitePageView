@@ -15,28 +15,43 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let itemA = PageItemView(frame: CGRect.zero, title: "TitleA")
+        let itemA = PageItemView(frame: CGRect.zero, title: "Tokyo")
         let contentA = PageContentView()
+        contentA.backgroundColor = .blue
         let pageA = InfinitePage(index: 0, item: itemA, content: contentA, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
         infinitePageView.addPage(pageA)
 
-        let itemB = PageItemView(frame: CGRect.zero, title: "TitleB")
+        let itemB = PageItemView(frame: CGRect.zero, title: "Tipei")
         let contentB = PageContentView()
+        contentB.backgroundColor = .red
         let pageB = InfinitePage(index: 1, item: itemB, content: contentB, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
         infinitePageView.addPage(pageB)
 
-        let itemC = PageItemView(frame: CGRect.zero, title: "TitleC")
+        let itemC = PageItemView(frame: CGRect.zero, title: "Paris")
         let contentC = PageContentView()
+        contentC.backgroundColor = .yellow
         let pageC = InfinitePage(index: 2, item: itemC, content: contentC, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
         infinitePageView.addPage(pageC)
 
-        let itemD = PageItemView(frame: CGRect.zero, title: "TitleD")
+        let itemD = PageItemView(frame: CGRect.zero, title: "London")
         let contentD = PageContentView()
-        let pageD = InfinitePage(index: 2, item: itemD, content: contentD, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
+        contentD.backgroundColor = .red
+        let pageD = InfinitePage(index: 3, item: itemD, content: contentD, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
         infinitePageView.addPage(pageD)
 
+        let itemE = PageItemView(frame: CGRect.zero, title: "New York")
+        let contentE = PageContentView()
+        contentE.backgroundColor = .blue
+        let pageE = InfinitePage(index: 4, item: itemE, content: contentE, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
+        infinitePageView.addPage(pageE)
 
-        infinitePageView.commonInit()
+        let itemF = PageItemView(frame: CGRect.zero, title: "San Francisco")
+        let contentF = PageContentView()
+        contentF.backgroundColor = .yellow
+        let pageF = InfinitePage(index: 5, item: itemF, content: contentF, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
+        infinitePageView.addPage(pageF)
+
+        infinitePageView.commit()
     }
 
     override func viewDidAppear(_ animated: Bool) {

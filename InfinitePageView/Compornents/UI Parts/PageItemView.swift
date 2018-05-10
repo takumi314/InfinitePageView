@@ -12,13 +12,13 @@ public class PageItemView: UIView {
 
     // MARK: - Properties
 
-    var titleLabel = UILabel()
-    var menuItemSeparator = UIView()
-    var width: CGFloat = 0.0
+    let titleLabel = UILabel()
+    
+    private let menuItemSeparator = UIView()
 
     // MARK: - Methods
 
-    init(frame: CGRect, title: String) {
+    public init(frame: CGRect = .zero, title: String) {
         super.init(frame: frame)
         commonInit()
         setTitleText(title)
@@ -29,7 +29,7 @@ public class PageItemView: UIView {
         commonInit()
     }
 
-    func commonInit() {
+    private func commonInit() {
         backgroundColor = .blue
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -45,26 +45,6 @@ public class PageItemView: UIView {
         ])
     }
 
-    func setUpMenuItemView(_ config: MenuItemConfiguration) {
-        let labelHeight = config.menuScrollViewHeight - config.indicatorHeight
-        titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: config.menuItemWidth, height: labelHeight))
-
-        let xValue = config.menuItemWidth - (config.separatorWidth / 2.0)
-        let yValue = config.menuScrollViewHeight * ((1.0 - config.separatorPercentageHeight) / 2.0)
-        let separatorHeight = config.menuScrollViewHeight * config.separatorPercentageHeight
-        menuItemSeparator = UIView(frame: CGRect(x: xValue, y: yValue, width: config.separatorWidth, height: separatorHeight))
-
-        menuItemSeparator.backgroundColor = config.menuItemSeparatorColor
-
-        if config.separatorRoundEdges {
-            menuItemSeparator.layer.cornerRadius = menuItemSeparator.frame.width / 2
-        }
-
-        menuItemSeparator.isHidden = true
-        self.addSubview(menuItemSeparator)
-        self.addSubview(titleLabel)
-    }
-
     func setTitleText(_ text: String) {
         titleLabel.text = text
         titleLabel.numberOfLines = 0
@@ -78,6 +58,27 @@ public class PageItemView: UIView {
         } else {
             backgroundColor = .blue
         }
+    }
+
+
+    func setUpMenuItemView(_ config: MenuItemConfiguration) {
+        let labelHeight = config.menuScrollViewHeight - config.indicatorHeight
+        titleLabel.frame = CGRect(x: 0.0, y: 0.0, width: config.menuItemWidth, height: labelHeight)
+
+        let xValue = config.menuItemWidth - (config.separatorWidth / 2.0)
+        let yValue = config.menuScrollViewHeight * ((1.0 - config.separatorPercentageHeight) / 2.0)
+        let separatorHeight = config.menuScrollViewHeight * config.separatorPercentageHeight
+        menuItemSeparator.frame = CGRect(x: xValue, y: yValue, width: config.separatorWidth, height: separatorHeight)
+
+        menuItemSeparator.backgroundColor = config.menuItemSeparatorColor
+
+        if config.separatorRoundEdges {
+            menuItemSeparator.layer.cornerRadius = menuItemSeparator.frame.width / 2
+        }
+
+        menuItemSeparator.isHidden = true
+        self.addSubview(menuItemSeparator)
+        self.addSubview(titleLabel)
     }
 
     func configure(for pageView: InfinitePageView, view: UIView, index: CGFloat) {
