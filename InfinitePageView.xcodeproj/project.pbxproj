@@ -25,6 +25,8 @@
 		E115DE75209F6B8900FBA5B5 /* CGManipulatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */; };
 		E11A7F0620A33A5100E4C1E6 /* MenuItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11A7F0520A33A5100E4C1E6 /* MenuItemConfiguration.swift */; };
 		E11A7F0720A33A5100E4C1E6 /* MenuItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11A7F0520A33A5100E4C1E6 /* MenuItemConfiguration.swift */; };
+		E11A7F0A20A46F5300E4C1E6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11A7F0920A46F5300E4C1E6 /* StringExtension.swift */; };
+		E11A7F0B20A46F5300E4C1E6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11A7F0920A46F5300E4C1E6 /* StringExtension.swift */; };
 		E1E5DABD209CA25400B59F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5DABC209CA25400B59F73 /* AppDelegate.swift */; };
 		E1E5DABF209CA25400B59F73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5DABE209CA25400B59F73 /* ViewController.swift */; };
 		E1E5DAC2209CA25400B59F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E5DAC0209CA25400B59F73 /* Main.storyboard */; };
@@ -61,6 +63,7 @@
 		E115DE6F209D50D900FBA5B5 /* InfinitePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePage.swift; sourceTree = "<group>"; };
 		E115DE73209F63D400FBA5B5 /* CGManipulatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGManipulatable.swift; sourceTree = "<group>"; };
 		E11A7F0520A33A5100E4C1E6 /* MenuItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemConfiguration.swift; sourceTree = "<group>"; };
+		E11A7F0920A46F5300E4C1E6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E1E5DAB9209CA25400B59F73 /* InfinitePageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E5DABC209CA25400B59F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E5DABE209CA25400B59F73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		E11A7F0820A46EFE00E4C1E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E11A7F0920A46F5300E4C1E6 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +339,7 @@
 				E115DE49209CBB4000FBA5B5 /* InfinitePageView.swift in Sources */,
 				E115DE74209F63D400FBA5B5 /* CGManipulatable.swift in Sources */,
 				E1E5DABD209CA25400B59F73 /* AppDelegate.swift in Sources */,
+				E11A7F0A20A46F5300E4C1E6 /* StringExtension.swift in Sources */,
 				E115DE70209D50D900FBA5B5 /* InfinitePage.swift in Sources */,
 				E115DE69209D4B4200FBA5B5 /* InfinitePageView+UIScrollView.swift in Sources */,
 				E11A7F0620A33A5100E4C1E6 /* MenuItemConfiguration.swift in Sources */,
@@ -354,6 +359,7 @@
 				E115DE71209D50D900FBA5B5 /* InfinitePage.swift in Sources */,
 				E115DE4D209CC94300FBA5B5 /* InfinitePageView+UIConfiguration.swift in Sources */,
 				E115DE4A209CBB4000FBA5B5 /* InfinitePageView.swift in Sources */,
+				E11A7F0B20A46F5300E4C1E6 /* StringExtension.swift in Sources */,
 				E115DE75209F6B8900FBA5B5 /* CGManipulatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
