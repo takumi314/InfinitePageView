@@ -104,6 +104,7 @@
 		E115DE41209CB60300FBA5B5 /* Compornents */ = {
 			isa = PBXGroup;
 			children = (
+				E11A7F0820A46EFE00E4C1E6 /* Extensions */,
 				E115DE6E209D508E00FBA5B5 /* ValueObjects */,
 				E115DE6D209D4FDA00FBA5B5 /* UI Parts */,
 				E115DE45209CB8CA00FBA5B5 /* PageMenuConfiguration.swift */,
@@ -131,6 +132,13 @@
 				E11A7F0520A33A5100E4C1E6 /* MenuItemConfiguration.swift */,
 			);
 			path = ValueObjects;
+			sourceTree = "<group>";
+		};
+		E11A7F0820A46EFE00E4C1E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E1E5DAB0209CA25400B59F73 = {
