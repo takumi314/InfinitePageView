@@ -60,8 +60,6 @@ public class PageItemView: UIView {
         titleLabel.sizeToFit()
     }
 
-    }
-
     public func highlightMenuItem(_ didHighlightView: Bool) {
         if didHighlightView {
             backgroundColor = color
