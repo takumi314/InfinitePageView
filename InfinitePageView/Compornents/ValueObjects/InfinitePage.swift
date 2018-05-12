@@ -16,6 +16,17 @@ public struct InfinitePage {
     public let size: CGSize
 }
 
+extension InfinitePage {
+    func syncColor() -> InfinitePage {
+        item.backgroundColor = color
+        content.backgroundColor = color
+        return self
+    }
+    func pipeEachView() -> (PageItemView, PageContentView) {
+        return (item, content)
+    }
+}
+
 extension InfinitePage: Equatable {
     public static func ==(lhs: InfinitePage, rhs: InfinitePage) -> Bool {
         return lhs.index == rhs.index &&
