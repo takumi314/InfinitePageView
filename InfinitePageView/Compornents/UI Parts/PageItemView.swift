@@ -38,7 +38,7 @@ public class PageItemView: UIView {
     }
 
     private func commonInit() {
-        backgroundColor = .blue
+        backgroundColor = .lightGray
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
@@ -60,12 +60,6 @@ public class PageItemView: UIView {
         titleLabel.sizeToFit()
     }
 
-    func highlightMenuItem(_ didHighlightView: Bool) {
-        if didHighlightView {
-            backgroundColor = .white
-        } else {
-            backgroundColor = .blue
-        }
     }
 
     public func highlightMenuItem(_ didHighlightView: Bool) {
