@@ -13,7 +13,15 @@ public class PageItemView: UIView {
     // MARK: - Properties
 
     let titleLabel = UILabel()
-    
+
+    public var title: String {
+        get {
+            return titleLabel.text ?? "No title"
+        }
+    }
+
+    private var color: UIColor = .lightGray
+
     private let menuItemSeparator = UIView()
 
     // MARK: - Methods
@@ -45,7 +53,7 @@ public class PageItemView: UIView {
         ])
     }
 
-    func setTitleText(_ text: String) {
+    public func setTitleText(_ text: String) {
         titleLabel.text = text
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
