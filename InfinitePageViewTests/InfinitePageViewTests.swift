@@ -33,7 +33,7 @@ class InfinitePageViewTests: XCTestCase {
         // given
         let pageItem = PageItemView(frame: CGRect.zero, title: "")
         let pageContent = PageContentView(frame: CGRect.zero)
-        let page = InfinitePage(index: 0, item: pageItem, content: pageContent, offset: 0.0, size: CGSize(width: 0.0, height: 0.0))
+        let page = InfinitePage(index: 0, item: pageItem, content: pageContent, color: .white)
 
         // when
         pageView?.addPage(page)
