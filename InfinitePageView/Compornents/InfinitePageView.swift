@@ -79,6 +79,9 @@ public class InfinitePageView: UIView {
     var currentPage: Page = 1   // { Page| 1, 2, 3, ... }
     var currentIndex: Int = 0
 
+    var currentMeneCenterX: CGFloat = 0.0
+    var currentContentOffsetX: CGFloat = 0.0
+
     var delegate: PageMenuDelegate?
 
     // MARK: - Initializer
@@ -133,11 +136,13 @@ extension InfinitePageView {
 
     func initializeContentScrollView() {
         contentScrollView.backgroundColor = .gray
+        contentScrollView.delegate = self
 
         addSubview(contentScrollView)
 
         contentScrollView.translatesAutoresizingMaskIntoConstraints = false
         contentScrollView.isPagingEnabled = true
+        contentScrollView.bounces = false
 
         NSLayoutConstraint.activate([
             contentScrollView.topAnchor.constraint(equalTo: self.menuScrollView.bottomAnchor, constant: 0.0),
@@ -173,11 +178,13 @@ extension InfinitePageView {
         let targetCenter = menuItem.center  // a coordinate in menuScrollView
         let targetOffsetX = targetCenter.x - menuScrollView.bounds.width / 2
         menuScrollView.setContentOffset(CGPoint(x: targetOffsetX, y: 0), animated: animated)
+        currentMeneCenterX = targetOffsetX
 
         // content
         let contentView = viewContents[index]
-        let targetOrigin = contentView.origin
-        contentScrollView.setContentOffset(targetOrigin, animated: animated)
+        let contentOffsetX = contentView.origin.x
+        contentScrollView.setContentOffset(CGPoint(x: contentOffsetX, y: 0), animated: animated)
+        currentContentOffsetX = contentOffsetX
 
         UIView.animate(withDuration: 0.1) {
             self.menuItems[index].highlightMenuItem(true)
@@ -201,56 +208,47 @@ extension InfinitePageView {
         dataSource.append(page)
     }
 
+    func removeAllPagesFromScrollView() {
+        menuItems.forEach({ $0.removeFromSuperview() })
+        viewContents.forEach({ $0.removeFromSuperview() })
+    }
+
     func reload() {
+        // remove all views from superview
+        removeAllPagesFromScrollView()
+
         if dataSource.isEmpty {
             return
         }
 
-        // remove all views from superview
-        menuItems.forEach({ $0.removeFromSuperview() })
-        viewContents.forEach({ $0.removeFromSuperview() })
-
-        // setup scroll view paging
-        contentScrollView.isPagingEnabled = true
-
-        // Configure scroll view content size
-//        let contentWidth = contentScrollView.bounds.width
-//        let contentHeight = CGFloat(0.0)
-//        contentScrollView.contentSize = CGSize(width: contentWidth * CGFloat(viewContents.count),
-//                                               height: contentHeight)
-
-        // order by index
-//        viewContents = dataSource.sorted(by: { $0.index < $1.index }).map({ $0.content })
-
-        var xValue = Menu.Offset
-        var xIndex: CGFloat = 0.0
+        var menuX = Menu.Offset
+        var contentX: CGFloat = 0.0
         let contentSize = contentScrollView.bounds.size
 
-        dataSource
-            .sorted { $0.index < $1.index }
-            .map { ($0.item, $0.content) }
+        // layout each views on the UIScrollView by order of index
+        dataSource.sorted { $0.index < $1.index }
+            .map { $0.syncColor() }     // color
+            .map { $0.pipeEachView() }  // From one view to two viwws
             .map { [unowned self](menu: PageItemView, content: PageContentView) -> (PageItemView, PageContentView) in
 
                 // For menu
-                xValue += Menu.Margin.leading
+                menuX += Menu.Margin.leading
 
-                let drawingTextSize = (menu.titleLabel.text ?? "").drawingRect(UIFont.systemFont(ofSize: Menu.fontSize))
+                let drawingTextSize = menu.title.drawingRect(UIFont.systemFont(ofSize: Menu.fontSize))
                 let menuItemWidth = drawingTextSize.width + Menu.Padding.leading + Menu.Padding.trailing
-                menu.frame = CGRect(x: xValue, y: Menu.Margin.top, width: menuItemWidth, height: Menu.height)
+                menu.frame = CGRect(x: menuX, y: Menu.Margin.top, width: menuItemWidth, height: Menu.height)
 
                 self.menuScrollView.addSubview(menu)
 
-                xValue += menuItemWidth + Menu.Margin.trailing
-
+                menuX += menuItemWidth + Menu.Margin.trailing
 
                 // For content
-                print(xIndex)
-                content.frame = CGRect(x: xIndex * contentSize.width, y: Menu.height, width: contentSize.width, height: contentSize.height)
+                content.frame = CGRect(x: contentX * contentSize.width, y: 0.0, width: contentSize.width, height: contentSize.height)
 
                 self.contentScrollView.addSubview(content)
                 self.contentScrollView.backgroundColor = .yellow
 
-                xIndex += 1.0
+                contentX += 1.0
 
                 return (menu, content)
             }.forEach {
@@ -258,8 +256,9 @@ extension InfinitePageView {
                 self.viewContents.append($0.1)
             }
 
-        menuScrollView.contentSize = CGSize(width: xValue + menuItems.last!.size.width , height: Menu.height)
-        contentScrollView.contentSize = CGSize(width: xIndex * contentSize.width, height: contentSize.height)
+        // set each values to contentSize on the UIScrollView
+        menuScrollView.contentSize = CGSize(width: menuX + menuItems.last!.size.width , height: Menu.height)
+        contentScrollView.contentSize = CGSize(width: contentX * contentSize.width, height: contentSize.height)
     }
 
     // MARK: - Private methods
@@ -347,14 +346,6 @@ extension InfinitePageView {
         let viewWidth = UIScreen.main.bounds.width
         let viewHeight = views.first!.bounds.height
         contentScrollView.contentSize = CGSize(width: viewWidth * CGFloat(views.count), height: viewHeight)
-    }
-
-    func scrollToPreviousPage() {
-
-    }
-
-    func scrollToNextPage() {
-
     }
 
 }
