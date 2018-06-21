@@ -17,7 +17,7 @@ public struct InfinitePage {
 
 extension InfinitePage {
     func syncColor() -> InfinitePage {
-        item.backgroundColor = color
+        item.setColour(color)
         content.backgroundColor = color
         return self
     }

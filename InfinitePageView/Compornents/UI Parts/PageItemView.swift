@@ -60,6 +60,10 @@ public class PageItemView: UIView {
         titleLabel.sizeToFit()
     }
 
+    public func setColour(_ colour: UIColor) {
+        self.color = colour
+    }
+
     public func highlightMenuItem(_ didHighlightView: Bool) {
         if didHighlightView {
             backgroundColor = color
